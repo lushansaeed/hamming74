@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamming(7,4) Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Hamming(7,4) Code Generator</h1>
+    <form action="/" method="post">
+        <input type="text" name="data" placeholder="Enter a 4-bit binary number" required>
+        <input type="submit" value="Generate">
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <p>You entered: <strong>{{ request.form['data'] }}</strong></p>
+        <p>The Hamming(7,4) code is: <strong>{{ result }}</strong></p>
+    </div>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+</div>
+</body>
+</html>
